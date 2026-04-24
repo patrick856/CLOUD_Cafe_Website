@@ -2,6 +2,7 @@ import ejs from 'ejs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import express from 'express';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,7 +19,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/menu', (req, res) => {
-    res.render('menu.ejs');
+    const menuData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/menu.json'), 'utf8'));
+    res.render('menu.ejs', { menu: menuData });
 });
 
 app.get('/visit', (req, res) => {

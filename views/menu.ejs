@@ -1,2 +1,60 @@
 <%- include("partials/header.ejs") %>
+
+<section class="menu-header-section">
+    <h2 class="menu-title">Menu</h2>
+    <div class="menu-categories">
+        <% menu.forEach((category) => { %>
+            <div class="menu-category">
+                <a href="#<%= category.category.replace(/\s+/g, '') %>-section"><%= category.category %></a>
+                <img src="/masks/mobileparagraphmask.svg" alt="">
+            </div>
+        <% }); %>
+    </div>
+    <div class="menu-header-separator">
+        <img src="/masks/mobileaboutimgmiddleleftcloud.svg" alt="">
+        <img src="/masks/mobileaboutimgmiddlerightcloud.svg" alt="">
+    </div>
+</section>
+
+<% menu.forEach((category) => { %>
+    <section id="<%= category.category.replace(/\s+/g, '') %>-section" class="menu-section">
+
+        <div class="menu-category-header">
+            <div class="featured-item">
+                <img class="featured-image" src="<%= category.image %>" alt="">
+                <img class="featured-over-cloud" src="/masks/mobilefeaturedovercloud.svg" alt="">
+                <img class="featured-under-cloud" src="/masks/mobilefeaturedundercloud.svg" alt="">
+            </div>
+            <h3 class="category-title" id="<%= category.category %>"><%= category.category %></h3>
+        </div>
+        
+        
+        <% category.subcategories.forEach((subcategory) => { %>
+            <div class="subcategory">
+                <h3 class="subcategory-title"><%= subcategory.name %></h3>
+                <% if (subcategory.note) { %>
+                    <p class="subcategory-note"><%= subcategory.note %></p>
+                <% } %>
+                
+                <div class="items-list">
+                    <% subcategory.items.forEach((item) => { %>
+                        <div class="menu-item">
+                            <div class="item-name"><%= item.name %></div>
+                            <div class="item-price">
+                                <% if (item.price !== null && item.price !== undefined) { %>
+                                    <span><%= item.price %></span>
+                                <% } else if (item.priceML) { %>
+                                    <% Object.entries(item.priceML).forEach(([size, price], index) => { %>
+                                        <span><%= size %>: <%= price %></span><% if (index < Object.entries(item.priceML).length - 1) { %> | <% } %>
+                                    <% }); %>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        <% }); %>
+    </section>
+<% }); %>
+
 <%- include("partials/footer.ejs") %>
