@@ -48,6 +48,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -57,13 +58,33 @@ body {
   background-color: var(--color-bg);
   line-height: 1.5;
   font-synthesis: none;
+  overflow-x: clip;
 }
 
-h1 { font-size: var(--fs-3xl); margin-bottom: var(--space-4); }
-h2 { font-size: var(--fs-2xl); margin-bottom: var(--space-3); }
-h3 { font-size: var(--fs-lg);  margin-bottom: var(--space-3); }
-h4 { font-size: var(--fs-xmd);  margin-bottom: var(--space-2); }
-p  { font-size: var(--fs-sm);  margin-bottom: var(--space-3); }
+h1 {
+  font-size: var(--fs-3xl);
+  margin-bottom: var(--space-4);
+}
+
+h2 {
+  font-size: var(--fs-2xl);
+  margin-bottom: var(--space-3);
+}
+
+h3 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-3);
+}
+
+h4 {
+  font-size: var(--fs-xmd);
+  margin-bottom: var(--space-2);
+}
+
+p {
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-3);
+}
 
 /* ============ PARTIALS ============== */
 
@@ -83,7 +104,7 @@ p  { font-size: var(--fs-sm);  margin-bottom: var(--space-3); }
 .nav::before {
   content: '';
   position: absolute;
-  bottom: -35px;   
+  bottom: -35px;
   left: -30px;
   width: 143px;
   height: 95px;
@@ -100,7 +121,7 @@ p  { font-size: var(--fs-sm);  margin-bottom: var(--space-3); }
 .nav::after {
   content: '';
   position: absolute;
-  bottom: -40px;   
+  bottom: -40px;
   right: -20px;
   width: 96px;
   height: 73px;
@@ -300,7 +321,7 @@ section {
 }
 
 .about-text {
-  display: flex; 
+  display: flex;
   align-items: center;
   justify-content: center;
   margin-top: var(--space-4);
@@ -381,7 +402,7 @@ section {
 
 .about-img-middle-left {
   position: absolute;
-  top: 25%; 
+  top: 25%;
   left: -70px;
   z-index: -1;
 }
@@ -397,7 +418,7 @@ section {
 
 .featured-section {
   padding-bottom: var(--space-9);
-  
+
 }
 
 .featured-items {
